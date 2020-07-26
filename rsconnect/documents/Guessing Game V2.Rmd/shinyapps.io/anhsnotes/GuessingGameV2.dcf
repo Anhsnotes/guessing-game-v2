@@ -1,0 +1,12 @@
+name: GuessingGameV2
+title: GuessingGameV2
+username:
+account: anhsnotes
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2613190
+bundleId: 3436216
+url: https://anhsnotes.shinyapps.io/GuessingGameV2/
+when: 1595736047.57214
+asMultiple: FALSE
+asStatic: FALSE

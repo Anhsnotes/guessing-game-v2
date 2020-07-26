@@ -13,27 +13,44 @@ runtime: shiny
 library(flexdashboard)
 ```
 
-Column {data-width=650}
+Column
 -----------------------------------------------------------------------
 
-### Chart A
+### Input
 
 ```{r}
-
+numericInput("guess",
+                   "Please choose a number between 1 and 100:",
+                   "",
+                   min = 1,
+                   max = 100,
+                   step = 1)
 ```
 
-Column {data-width=350}
+Column
 -----------------------------------------------------------------------
 
-### Chart B
+### Message
 
 ```{r}
-
-```
-
-### Chart C
-
-```{r}
-
+target <- sample(1:100,1)
+  
+  message <- reactive ({
+    if (is.na(input$guess)) {"Please choose your input."}
+    else { if (abs(input$guess - target) <= 5 & abs(input$guess - target) > 0){"We are close to the Earth core!"}
+      else { if (abs(input$guess - target) <= 10 & abs(input$guess - target) > 5){"It is hot like summer!"}
+        else { if (abs(input$guess - target) <= 15 & abs(input$guess - target) >10){"It is cold like winter!"}
+          else { if (abs(input$guess - target) <= 20 & abs(input$guess - target) > 15){"We are in the North Pole!"}
+            else { if (abs(input$guess - target) == 0){"Your are the winner!"}
+              else {"We are in liquid nitrogen!"}
+            }
+          }
+        }
+      }
+    }
+    
+  })
+  
+  renderText(message())
 ```
 
